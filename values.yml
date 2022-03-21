@@ -4,8 +4,8 @@ resources:
   - name: test_app
     type: GitRepo
     configuration:
-      gitProvider: test
-      path: mlauritsen/test                  # replace with your repository name
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
       branches:
         include: master
  
