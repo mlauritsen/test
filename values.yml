@@ -1,1 +1,14 @@
-
+pipelines:
+  - name: build_helloWorld_docker
+    steps:
+      - name: bld_image
+        type: DockerBuild
+        configuration:
+          dockerFileLocation: .
+          dockerFileName: Dockerfile
+          dockerImageName: docker.test/test         # replace with your fully qualified Docker registry/image name
+          dockerImageTag: ${run_number}
+          inputResources:
+            - name: test_app
+          integrations:
+            - name: default-docker
