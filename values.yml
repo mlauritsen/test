@@ -4,7 +4,7 @@ resources:
   - name: test_app
     type: GitRepo
     configuration:
-      gitProvider: myGithub
+      gitProvider: github.com
       path: mlauritsen/test                  # replace with your repository name
       branches:
         include: master
