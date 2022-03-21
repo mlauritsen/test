@@ -1,35 +1,3 @@
-
-resources:
-# Application source repository
-  - name: test_app
-    type: GitRepo
-    configuration:
-      gitProvider: {{ .Values.myRepo.gitProvider }}
-      path: {{ .Values.myRepo.path }}
-      branches:
-        include: master
- 
-# Docker image in an Artifactory repository
-  - name: base_image
-    type: Image
-    configuration:
-      registry: myArtifactory
-      sourceRepository: default-docker        # replace with your repository name
-      imageName: docker.test/baseimage
-      imageTag: latest
-      autoPull: true
-      
-pipelines:
-  - name: build_helloWorld_docker
-    steps:
-      - name: bld_image
-        type: DockerBuild
-        configuration:
-          dockerFileLocation: .
-          dockerFileName: Dockerfile
-          dockerImageName: docker.test/test         # replace with your fully qualified Docker registry/image name
-          dockerImageTag: ${run_number}
-          inputResources:
-            - name: test_app
-          integrations:
-            - name: myArtifactory
+myRepo:
+  gitProvider: test
+  path: test/
